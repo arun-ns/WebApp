@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setAppCacheEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setLoadWithOverviewMode(true);
+        webSettings.setDatabaseEnabled(true);
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setPluginState(WebSettings.PluginState.ON);
         webSettings.setMediaPlaybackRequiresUserGesture(false);
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 progressBar.setVisibility(View.VISIBLE);
-                System.out.println("MainActivity.shouldOverrideUrlLoading " + url);
                 view.loadUrl(url);
                 return true;
             }
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         webView.setWebChromeClient(new WebChromeClient());
-        webView.loadUrl("https://accounts.google.com/signin/v2/identifier?service=wise&passive=true&continue=http%3A%2F%2Fdrive.google.com%2F%3Futm_source%3Den&utm_medium=button&utm_campaign=web&utm_content=gotodrive&usp=gtd&ltmpl=drive&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+        webView.loadUrl("http://google.com");
     }
 
     @Override
