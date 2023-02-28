@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.webbrowser.MainActivity">
+        <activity
+            android:exported="true"
+            android:name="com.webbrowser.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="FCM_ACTION" />
