@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         webSettings.loadsImagesAutomatically = true
         webSettings.allowContentAccess = true
         webSettings.javaScriptEnabled = true
-        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
+        webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         webSettings.domStorageEnabled = true
         webSettings.loadWithOverviewMode = true
         webSettings.databaseEnabled = true
@@ -40,13 +40,13 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onPageFinished(view: WebView, url: String) {
-                binding.progressBar.setVisibility(View.GONE)
-                binding.webView.setVisibility(View.VISIBLE)
+                binding.progressBar.visibility = View.GONE
+                binding.webView.visibility = View.VISIBLE
             }
         }
         val jsInterface = JavaScriptInterface(binding.webView)
         binding.webView.addJavascriptInterface(jsInterface, "Android")
         binding.webView.webChromeClient = WebChromeClient()
-        binding.webView.loadUrl("http://192.168.1.142:8000/")
+        binding.webView.loadUrl("http://192.168.1.142:8000")
     }
 }
