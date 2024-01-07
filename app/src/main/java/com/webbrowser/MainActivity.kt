@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         val jsInterface = JavaScriptInterface(binding.webView)
         binding.webView.addJavascriptInterface(jsInterface, "Android")
         binding.webView.webChromeClient = WebChromeClient()
-        binding.webView.loadUrl("http://192.168.1.142:8000")
+//        binding.webView.loadUrl("http://192.168.1.142:8000")
+        binding.webView.loadUrl("https://www.superlist.com")
     }
 }
