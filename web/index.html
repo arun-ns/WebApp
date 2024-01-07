@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example</title>
+    <style>
+        /* Style for the button */
+        button {
+            font-size: 24px; /* Set the font size to be larger */
+            padding: 15px 30px; /* Adjust padding for the button */
+            position: absolute; /* Positioning absolute */
+            top: 50%; /* Place the top edge at the vertical center */
+            left: 50%; /* Place the left edge at the horizontal center */
+            transform: translate(-50%, -50%); /* Move the button back by half its width and height */
+        }
+    </style>
+    <script>
+        function callNativeFunction() {
+            // Call the Java method through the interface
+            Android.showToast("Hello World!");
+            Android.printMessage("Hello World!");
+            // window.webkit.messageHandlers.callbackHandler.postMessage("Hello from JavaScript!");
+        }
+    </script>
+</head>
+<body>
+    <button onclick="callNativeFunction()">Click me</button>
+</body>
+</html>
