@@ -24,15 +24,14 @@ class MainActivity : AppCompatActivity() {
         webSettings.loadsImagesAutomatically = true
         webSettings.allowContentAccess = true
         webSettings.javaScriptEnabled = true
-        webSettings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
         webSettings.domStorageEnabled = true
         webSettings.loadWithOverviewMode = true
         webSettings.databaseEnabled = true
         webSettings.javaScriptCanOpenWindowsAutomatically = true
-        webSettings.pluginState = WebSettings.PluginState.ON
         webSettings.mediaPlaybackRequiresUserGesture = false
         webSettings.loadWithOverviewMode = true
         webSettings.useWideViewPort = true
+        webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
         binding.webView.webViewClient = object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 binding.progressBar.visibility = View.VISIBLE
