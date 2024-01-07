@@ -3,11 +3,11 @@ package com.webbrowser
 import android.os.Bundle
 import android.view.View
 import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.webbrowser.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -33,9 +33,17 @@ class MainActivity : AppCompatActivity() {
         webSettings.useWideViewPort = true
         webSettings.cacheMode = WebSettings.LOAD_NO_CACHE
         binding.webView.webViewClient = object : WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+
+            @Deprecated("Deprecated")
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
                 binding.progressBar.visibility = View.VISIBLE
-                return super.shouldOverrideUrlLoading(view, request)
+                println("shouldOverrideUrlLoading. $url")
+                val scheme = url?.toUri()?.scheme
+                return if(scheme == "https" || scheme == "http"){
+                    super.shouldOverrideUrlLoading(view, url)
+                } else {
+                    true
+                }
             }
 
             override fun onPageFinished(view: WebView, url: String) {
@@ -48,5 +56,13 @@ class MainActivity : AppCompatActivity() {
         binding.webView.webChromeClient = WebChromeClient()
 //        binding.webView.loadUrl("http://192.168.1.142:8000")
         binding.webView.loadUrl("https://www.superlist.com")
+    }
+
+    override fun onBackPressed() {
+        if (binding.webView.canGoBack()) {
+            binding.webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
