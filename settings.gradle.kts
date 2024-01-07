@@ -13,5 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "WebBrowser"
+rootProject.name = "WebApp"
 include(":app")
+include(":twa")
